@@ -6,8 +6,8 @@ const GIST_SHORT_IDS = process.env.GIST_SHORT_IDS_STR.split(",");
 const GITHUB_PAT = process.env.GIST_PAT;
 const BOT_TOKEN = process.env.BOT_TOKEN;
 
-const TELEGRAM_CHAT_ID = -1001249449971;
-const Login = "SimonAKing";
+const TELEGRAM_CHAT_ID = -1003777802947;
+const Login = "Kemeow0815";
 const REPO = "weibo";
 
 const github = axios.create({
@@ -127,7 +127,7 @@ function formatIssueContent(issue) {
   return `${issue.body}
 
 ---
-${labelsText}Original post: https://simonaking.com/blog/weibo`;
+${labelsText}Original post: https://kemeow0815.github.io/blog/moment`;
 }
 
 function formatIssueTitle(issue) {
