@@ -23,7 +23,7 @@ const slimbot = new Slimbot(BOT_TOKEN);
 async function fetchGraphQL(query, variables = {}) {
   if (!GITHUB_PAT) {
     throw new Error(
-      "GitHub Personal Access Token (GITHUB_PAT) not found in environment variables."
+      "GitHub Personal Access Token (GITHUB_PAT) not found in environment variables.",
     );
   }
 
@@ -36,7 +36,7 @@ async function fetchGraphQL(query, variables = {}) {
       throw new Error(
         `GraphQL request failed: ${data.errors
           .map((e) => e.message)
-          .join(", ")}`
+          .join(", ")}`,
       );
     }
 
@@ -121,13 +121,7 @@ async function updateGistContent(gistId, content, description) {
 }
 
 function formatIssueContent(issue) {
-  const labelsText =
-    issue.labels.length > 0 ? `Labels: ${issue.labels.join(", ")}\n\n` : "";
-
-  return `${issue.body}
-
----
-${labelsText}Original post: https://kemeow0815.github.io/blog/moment`;
+  return issue.body;
 }
 
 function formatIssueTitle(issue) {
@@ -165,7 +159,7 @@ async function sendToTelegram(issue) {
 
     if (images && images.length > 0) {
       console.log(
-        `Found ${images.length} images in issue, sending to Telegram...`
+        `Found ${images.length} images in issue, sending to Telegram...`,
       );
 
       for (const image of images) {
@@ -202,11 +196,11 @@ async function main() {
     }
 
     const activeGistIds = GIST_SHORT_IDS.filter(
-      (id) => id && !id.startsWith("YOUR_GIST_ID")
+      (id) => id && !id.startsWith("YOUR_GIST_ID"),
     );
     if (activeGistIds.length === 0) {
       console.error(
-        "No valid Gist IDs provided. Update the GIST_SHORT_IDS array with your Gist IDs. Exiting."
+        "No valid Gist IDs provided. Update the GIST_SHORT_IDS array with your Gist IDs. Exiting.",
       );
       return;
     }
@@ -214,8 +208,8 @@ async function main() {
     console.log(
       `Updating ${Math.min(
         issues.length,
-        activeGistIds.length
-      )} Gists with issue content...`
+        activeGistIds.length,
+      )} Gists with issue content...`,
     );
 
     for (let i = 0; i < Math.min(issues.length, activeGistIds.length); i++) {
